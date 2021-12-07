@@ -1,0 +1,13 @@
+name: 'clang-format-action'
+description: 'Alerts on clang-format errors'
+author: 'ArangoDB'
+branding:
+  icon: 'code'
+  color: 'green'
+inputs: 
+  sources:
+    description: Names of the files/directories to check (space-delimited)
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
