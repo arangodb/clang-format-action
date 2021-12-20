@@ -1,4 +1,4 @@
-name: 'clang-format-action'
+name: 'arangodb-clang-format'
 description: 'Alerts on clang-format errors'
 author: 'ArangoDB'
 branding:
