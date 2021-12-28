@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 cd "$GITHUB_WORKSPACE" || exit 2
 if [ -z "$INPUT_SOURCES" ]
 then
