@@ -3,14 +3,12 @@ cd "/github/workspace"
 
 changed_files_filename="/tmp/.clang-format-$$.changed.tmp"
 
-git diff --diff-filter=ACMRT --name-only "$PR_BASE".."$PR_HEAD" -- arangod/ lib/ client-tools/ tests/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
+git diff --diff-filter=ACMRT --name-only "$PR_BASE".."$PR_HEAD" -- arangosh/ arangod/ lib/ client-tools/ tests/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
 
 if [ -s "$changed_files_filename" ]; then
-  sort "$changed_files_filename" | grep -E "\.\(ipp|tpp|cpp|hpp|cc|c|h\)$" | uniq > "$changed_files_filename.sorted"
-
   echo 
-  echo "about to check formatting on the following files:"
-  cat -n "$changed_files_filename.sorted"
+  echo "about to check formatting for the following files:"
+  cat -n "$changed_files_filename"
   echo
 else
   echo "no changes, nothing to do"
