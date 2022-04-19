@@ -1,8 +1,17 @@
 #!/bin/sh
 
+echo "GIT_DIR: '$GIT_DIR'"
+
 echo "we are in:"
 pwd
 ls -alh 
+
+echo ".git:"
+ls -alh .git
+
+echo "HEAD file:"
+cat .git/HEAD
+
 
 echo "/github/workspace:"
 ls -alh "/github/workspace"
