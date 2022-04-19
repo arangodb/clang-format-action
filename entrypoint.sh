@@ -1,7 +1,19 @@
 #!/bin/sh
-cd "/github/workspace"
+
+echo "we are in:"
+pwd
+ls -alh 
+
+echo "/github/workspace:"
+ls -alh "/github/workspace"
+
+#cd "/github/workspace"
 
 changed_files_filename="/tmp/.clang-format-$$.changed.tmp"
+
+echo "changed files filename: $changed_files_filename"
+
+echo "git diff --diff-filter=ACMRT --name-only $PR_BASE..$PR_HEAD -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > $changed_files_filename"
 
 git diff --diff-filter=ACMRT --name-only "$PR_BASE".."$PR_HEAD" -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
 
