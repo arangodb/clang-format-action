@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "version:"
+git --version
+
 echo "GIT_DIR: '$GIT_DIR'"
 
 echo "we are in:"
@@ -23,7 +26,7 @@ echo "changed files filename: $changed_files_filename"
 
 echo "git diff --diff-filter=ACMRT --name-only $PR_BASE..$PR_HEAD -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > $changed_files_filename"
 
-git diff --diff-filter=ACMRT --name-only "$PR_BASE".."$PR_HEAD" -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
+git diff --diff-filter=ACMRT --name-only "$PR_BASE" "$PR_HEAD" -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
 
 if [ -s "$changed_files_filename" ]; then
   echo 
