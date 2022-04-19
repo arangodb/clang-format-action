@@ -1,35 +1,10 @@
 #!/bin/sh
 
-echo "version:"
-git --version
-
-echo "BUILD/DIFF:"
-cat build/DIFF
-
-echo "GIT_DIR: '$GIT_DIR'"
-
-echo "we are in:"
-pwd
-ls -alh 
-
-echo ".git:"
-ls -alh .git
-
-echo "HEAD file:"
-cat .git/HEAD
-
-
-echo "/github/workspace:"
-ls -alh "/github/workspace"
-
-#cd "/github/workspace"
 changed_files_filename="/tmp/.clang-format-$$.changed.tmp"
 
 echo "changed files filename: $changed_files_filename"
 
-echo "git diff --diff-filter=ACMRT --name-only $PR_BASE..$PR_HEAD -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > $changed_files_filename"
-
-git diff --diff-filter=ACMRT --name-only "$PR_BASE" "$PR_HEAD" -- arangosh/ arangod/ lib/ client-tools/ tests/ Enterprise/ | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
+cat build/DIFF | grep -e '\.ipp$' -e '\.tpp$' -e '\.cpp$' -e '\.hpp$' -e '\.cc$' -e '\.c$' -e '\.h$' > "$changed_files_filename"
 
 if [ -s "$changed_files_filename" ]; then
   echo 
