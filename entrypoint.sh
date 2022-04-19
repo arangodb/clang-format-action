@@ -8,7 +8,6 @@ echo "/github/workspace:"
 ls -alh "/github/workspace"
 
 #cd "/github/workspace"
-
 changed_files_filename="/tmp/.clang-format-$$.changed.tmp"
 
 echo "changed files filename: $changed_files_filename"
