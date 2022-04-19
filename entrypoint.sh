@@ -3,6 +3,9 @@
 echo "version:"
 git --version
 
+echo "BUILD/DIFF:"
+cat build/DIFF
+
 echo "GIT_DIR: '$GIT_DIR'"
 
 echo "we are in:"
