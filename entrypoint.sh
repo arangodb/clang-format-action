@@ -1,5 +1,11 @@
 #!/bin/sh
 
+echo -n "git version: "
+git --version
+
+# add an exception for privileges to allow running "git show" later
+git config --global --add safe.directory /github/workspace
+
 changed_files_filename="/tmp/.clang-format-$$.changed.tmp"
 
 echo "changed files filename: $changed_files_filename"
